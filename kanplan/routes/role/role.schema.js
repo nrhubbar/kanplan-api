@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('user',{
-  orgid : String,
-  userid : String,
-  roles : [String]
+module.exports = mongoose.model('role',{
+  orgId : String,
+  userId : String,
+  role : String
 });

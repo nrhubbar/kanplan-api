@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('task',{
-  orgid : String,
+  orgId : String,
   author : String,
-  assignee : [String],
+  assignee : String,
   title : String,
   description : String,
   state : String,
   compensation : Number,
   creationTime : Date,
-  timelog : {
+  timeLog : {
     startTime : Date,
     endTime : Date
   },
