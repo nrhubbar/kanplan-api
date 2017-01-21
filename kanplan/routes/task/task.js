@@ -4,7 +4,7 @@ var role = require('../role/role.schema.js');
 
 module.exports = function(app) {
   app.get('/tasks/:orgId', function(req, res){
-    task.find({'orgId':req.params.orgId, 'assignee':req.params.assignee},
+    task.find({'orgId':req.params.orgId},
     {
       author:true,
       title:true,
@@ -61,4 +61,26 @@ module.exports = function(app) {
       }
     });
   });
+
+  app.put('/task/:taskId', function (req, res) {
+    task.findId(req.params.taskid).then(function (task, err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      if (task == null) {
+        res.status(404).send("Task Id does not exist");
+      }
+
+      task.assignee = req.body.userId;
+      task.state = "Assigned";
+
+      task.save().then(function () {
+        res.json(task);
+      },
+      function () {
+        res.send(err);
+      });
+    });
+  });
+
 };
