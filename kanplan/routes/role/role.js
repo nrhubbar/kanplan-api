@@ -21,7 +21,7 @@ module.exports = function(app) {
   });
 
   app.post('/role/:orgId/userId', function(req, res) {
-    if (req.body.role in validRoles) {
+    if (validRoles.includes(req.body.role)) {
       role.create({
         orgId : req.params.orgId,
         userId : req.params.userId,

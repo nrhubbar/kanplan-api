@@ -27,6 +27,9 @@ module.exports = function(app) {
       if (err) {
         res.status(500).send(err);
       }
+      if (user == null) {
+        res.status(404).send("email does not exist");
+      }
       if (user.password == req.body.password) {
         res.json(user);
       } else {

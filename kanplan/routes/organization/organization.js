@@ -69,7 +69,7 @@ module.exports = function(app) {
         });
       });
     } else {
-      res.status(400).send("Please use valid role, role you sent: " + req.body);
+      res.status(400).send("Please use valid role, role you sent: " + req.body.role);
     }
   });
 };
