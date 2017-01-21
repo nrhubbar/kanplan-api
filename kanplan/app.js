@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 
-app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
 mongoose.connect('mongodb://52.14.32.168:27017');
 port = 3000;
 
