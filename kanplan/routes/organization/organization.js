@@ -1,4 +1,5 @@
 var organization = require('./organization.schema.js');
+var role = require('../role/role.schema.js');
 var shortid = require('shortid');
 
 module.exports = function(app) {
@@ -12,8 +13,16 @@ module.exports = function(app) {
       if(err) {
         res.status(500).send(err);
       }
-      
-
-    })
+      role.create({
+        orgId : orgId,
+        userId : req.body.userId,
+        role : "admin"
+      }).then(function (role, err) {
+        if (err) {
+          res.status(500).send(err)
+        }
+        res.send(organization);
+      });
+    });
   });
 }
