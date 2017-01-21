@@ -30,6 +30,10 @@ module.exports = function(app) {
       if (err) {
         res.status(500).send(err);
       }
+
+      if(role == null) {
+        res.status(404).send("User does not exist");
+      }
       if (role.role == 'admin') {
         task.create({
           title : req.body.title,
@@ -52,6 +56,8 @@ module.exports = function(app) {
           }
           res.json(task);
         });
+      } else {
+        res.status(401).send("User does not have proper role");
       }
     });
   });
