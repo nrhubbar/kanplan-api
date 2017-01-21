@@ -36,7 +36,7 @@ app.use('/', index);
 require('./routes/user/users.js')(app);
 require('./routes/organization/organization.js')(app);
 require('./routes/task/task.js')(app);
-require('./role/role.js')(app);
+require('./routes/role/role.js')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
