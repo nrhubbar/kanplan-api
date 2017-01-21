@@ -1,0 +1,22 @@
+{
+  "name": "kanplan-api",
+  "version": "1.0.0",
+  "description": "this is the backend to kanplan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrhubbar/kanplan-api.git"
+  },
+  "author": "nick, trent",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nrhubbar/kanplan-api/issues"
+  },
+  "homepage": "https://github.com/nrhubbar/kanplan-api#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
