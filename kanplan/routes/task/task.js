@@ -83,4 +83,22 @@ module.exports = function(app) {
     });
   });
 
+  app.post('/task/:taskId/start', function (req, res) {
+    task.findId(req.params.taskId).then(function (task, err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      if(task == null) {
+        res.status(404).send("Task with that ID was not found");
+      }
+
+      task.timelog.start = new Time();
+      task.save().then(function () {
+        res.json(task);
+      }, function () {
+        res.status(500).send(err)
+      });
+    });
+  });
+  
 };
