@@ -74,4 +74,31 @@ module.exports = function (app) {
            });
        });
     });
+
+    app.post('/evaluation/decline/:evalId', function (req, res) {
+        evaluation.findId(req.params.evalId).then(function (evaluation, err) {
+            if (err) {
+                res.status(500).send(err);
+            }
+            if (evaluation == null) {
+                res.status(404).send("Evaluation with that Id did not exist");
+            }
+
+            task.findId(evaluation.taskId).then(function (task, err) {
+                if (err) {
+                    res.status(500).send(err);
+                }
+                if (task == null) {
+                    res.status(404).send("Task with that Id did not exist");
+                }
+
+                task.state = "Assigned";
+                task.save().then(function () {
+                    res.json(task);
+                }, function () {
+                    res.status(500).send(err);
+                });
+            });
+        });
+    });
 };
