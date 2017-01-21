@@ -11,6 +11,15 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/role/:orgId', function(req, res){
+    role.find({orgId : req.params.orgId}).then(function(role,err){
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json(role);
+    });
+  });
+
   app.post('/role/:orgId/userId', function(req, res) {
     if (req.body.role in validRoles) {
       role.create({
