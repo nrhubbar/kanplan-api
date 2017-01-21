@@ -11,7 +11,7 @@ module.exports = function(app) {
       compensation:true,
       timelog:true,
       time_worked:true
-    }).then(function(err, task) {
+    }).then(function(task, err) {
       if(err){
         res.send(err);
       }
