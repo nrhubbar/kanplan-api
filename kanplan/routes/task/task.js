@@ -26,7 +26,7 @@ module.exports = function(app) {
     var state = (req.body.assignee == null ? "Open" : "Assigned");
     var taskId = shortid.generate();
 
-    role.findOne({'orgId':req.params.orgId, 'userId':req.body.author}, {'role':true}).then(role,err) {
+    role.findOne({'orgId':req.params.orgId, 'userId':req.body.author}, {'role':true}).then(function(role,err) {
       if (err) {
         res.status(500).send(err);
       }
