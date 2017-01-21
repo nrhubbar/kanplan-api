@@ -23,12 +23,12 @@ module.exports = function(app) {
   });
 
   app.post('/user/login', function(req, res){
-    user.findOne({'email' : req.body.email}, {password : true, _id : true, name : true, orgs : true}).then(function(user, err) {
+    user.findOne({'email' : req.body.email}).then(function(user, err) {
       if (err) {
         res.status(500).send(err);
       }
       if (user.password == req.body.password) {
-        req.json(user);
+        res.json(user);
       } else {
         res.status(401).send("Incorect password");
       }
