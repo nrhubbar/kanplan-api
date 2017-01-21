@@ -9,7 +9,8 @@ module.exports = function(app) {
       name : req.body.name,
       password : req.body.password,
       _id : userId,
-      orgs : []
+      orgs : [],
+      email : req.body.email
     }).then(function(user, err) {
       if (err) {
         res.status(500).send(err);
