@@ -1,5 +1,5 @@
 var user = require('./user.schema.js');
-var shortid - require('shortid');
+var shortid = require('shortid');
 
 module.exports = function(app) {
   app.post('/user/signup', function(req, res){
