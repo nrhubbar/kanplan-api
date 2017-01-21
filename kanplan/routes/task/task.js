@@ -4,7 +4,7 @@ var role = require('../role/role.schema.js');
 
 module.exports = function(app) {
   app.get('/tasks/:orgId', function(req, res){
-    task.find({'orgId':req.params.orgId, 'assignee':req.params.assignee},
+    task.find({'orgId':req.params.orgId},
     {
       author:true,
       title:true,
