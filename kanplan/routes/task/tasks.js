@@ -18,4 +18,14 @@ module.exports = function(app) {
       res.json(task);
     });
   });
+
+  app.post('/tasks/:orgId', function(req, res) {
+    task.create({
+      title : req.body.title,
+      description : req.body.description,
+      compensation : req.body.compensation,
+      author : req.body.author,
+      orgId : req.params.orgId
+    })
+  });
 }

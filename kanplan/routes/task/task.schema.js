@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('task',{
-  orgid : String,
+  orgId : String,
   author : String,
   assignee : [String],
   title : String,
