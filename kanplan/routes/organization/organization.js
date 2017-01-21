@@ -41,7 +41,7 @@ module.exports = function(app) {
   });
 
   app.post('/organization/join', function (req, res) {
-    if (req.body.role in validRoles) {
+    if (validRoles.includes(req.body.role)) {
       role.create({
         orgId : req.body.orgId,
         userId : req.body.userId,
@@ -69,7 +69,7 @@ module.exports = function(app) {
         });
       });
     } else {
-      res.status(400).send("Please use valid role");
+      res.status(400).send("Please use valid role, role you sent: " + req.body);
     }
   });
 };
