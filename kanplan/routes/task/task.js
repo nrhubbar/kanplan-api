@@ -63,7 +63,7 @@ module.exports = function(app) {
   });
 
   app.put('/task/:taskId', function (req, res) {
-    task.findId(req.params.taskid).then(function (task, err) {
+    task.find({_id : req.params.taskid}).then(function (task, err) {
       if (err) {
         res.status(500).send(err);
       }
@@ -102,7 +102,7 @@ module.exports = function(app) {
   });
 
   app.post('/task/:taskId/stop', function(req, res) {
-    task.findId(req.params.taskId).then(function (task, err) {
+    task.find({_id : req.params.taskId}).then(function (task, err) {
       if (err) {
         res.status(500).send(err);
       }

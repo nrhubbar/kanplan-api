@@ -50,7 +50,7 @@ module.exports = function(app) {
         if (err) {
           res.status(500).send(err);
         }
-        user.findById(req.body.userId).then(function (user, err) {
+        user.find({_id : req.body.userId}).then(function (user, err) {
           if (err) {
             res.status(500).send(err);
           }
