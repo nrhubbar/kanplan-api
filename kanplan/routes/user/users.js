@@ -1,5 +1,5 @@
 var user = require('./user.schema.js');
-var shortid - require('shortid');
+var shortid = require('shortid');
 
 module.exports = function(app) {
   app.post('/user/signup', function(req, res){
@@ -10,7 +10,7 @@ module.exports = function(app) {
       password : req.body.password,
       _id : userId,
       orgs : []
-    }).then(function(err, user) {
+    }).then(function(user, err) {
       if (err) {
         res.status(500).send(err);
       }
@@ -22,7 +22,7 @@ module.exports = function(app) {
   });
 
   app.post('/user/login', function(req, res){
-    user.findOne({'email' : req.body.email}, {password : true, _id : true, name : true, orgs : true}).then(function(err, user) {
+    user.findOne({'email' : req.body.email}, {password : true, _id : true, name : true, orgs : true}).then(function(user, err) {
       if (err) {
         res.status(500).send(err);
       }
