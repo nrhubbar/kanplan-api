@@ -3,8 +3,8 @@ var role = require('../role/role.schema.js');
 var shortid = require('shortid');
 
 module.exports = function(app) {
-  app.get('/organizations/:orgid', function(req, res){
-    organization.findOne({orgId : req.params.orgId}).then(function(organization,err){
+  app.get('/organization/:orgid', function(req, res){
+    organization.findOne({_id : req.params.orgId}).then(function(organization, err){
       if (err) {
         res.status(500).send(err);
       }
