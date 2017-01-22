@@ -60,7 +60,8 @@ module.exports = function (app) {
                    invoice.create({
                        taskId : task._id,
                        dateFinished : new Date(),
-                       totalCompensation : (task.compensation * task.timeWorked)
+                       totalCompensation : (task.compensation * task.timeWorked),
+                       orgId : task.orgId
                    }).then(function (invoice, err) {
                        if (err) {
                            res.status(500).send(err);
