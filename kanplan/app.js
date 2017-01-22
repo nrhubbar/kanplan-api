@@ -5,21 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 var index = require('./routes/index');
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 mongoose.connect('mongodb://52.14.32.168');
 port = 3000;
@@ -37,6 +33,7 @@ require('./routes/user/users.js')(app);
 require('./routes/organization/organization.js')(app);
 require('./routes/task/task.js')(app);
 require('./routes/role/role.js')(app);
+require('./routes/evaluation/evaluation.js')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
