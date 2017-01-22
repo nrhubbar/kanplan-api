@@ -4,7 +4,8 @@ var role = require('../role/role.schema.js');
 
 module.exports = function(app) {
   app.get('/tasks/:orgId', function(req, res){
-    task.find({'orgId':req.params.orgId},
+    var query = ((req.query.state)? {'orgId':req.params.orgId, state : req.query.state} : {'orgId':req.params.orgId});
+    task.find(query,
     {
       author:true,
       title:true,
