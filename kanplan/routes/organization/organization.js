@@ -17,6 +17,19 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/organization', function (req, res) {
+    organization.find({}, {name : true, _id : true}).then(function (orgs, err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      if(orgs == null) {
+        res.status(404).send("No Orgs");
+      }
+
+      res.json(orgs);
+    })
+  });
+
   app.post('/organization/create', function(req, res){
     var orgId = shortid.generate();
     organization.create({
