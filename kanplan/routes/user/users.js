@@ -37,4 +37,16 @@ module.exports = function(app) {
       }
     });
   });
+
+  app.get('/user/:userId', function (req, res){
+    user.findOne({_id : req.params.userId}).then(function (user, err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      if (user == null) {
+        res.status(404).send("email does not exist");
+      }
+      res.json(user);
+    })
+  });
 };
