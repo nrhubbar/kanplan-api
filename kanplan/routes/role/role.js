@@ -20,7 +20,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/role/:orgId/userId', function(req, res) {
+  app.post('/role/:orgId/:userId', function(req, res) {
     if (validRoles.includes(req.body.role)) {
       role.create({
         orgId : req.params.orgId,
